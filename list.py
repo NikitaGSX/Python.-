@@ -30,18 +30,26 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
-#def write_to_csv(file, prod_name=None, os_name=None, code_name=None, system_name=None):
-#    with open(file, r+) as list:
-#        writer = csv.writer(list):
-#            for row in get_data(*prod_name=None, *os_name=None, *code_name=None, *system_name=None):
-#                writer.writerow(row)
+def write_to_csv(file, *args):
+
+    DATA = [
+            [os_prod_list],
+            [os_name_list],
+            [os_code_list],
+            [os_type_list]
+            ]
+
+    with open(file, 'r+') as list:
+        writer = csv.writer(list)
+        for row in DATA:
+            writer.writerow(row)
 
 for i in spisok:
     with open(i, encoding="cp1251") as file:
         for line in file.readlines():
             if os_prod_list in line:
                 prod_name = line
-                print(get_data(prod_name))
+                print(write_to_csv('./data/test.csv', get_data(prod_name)))
             elif os_name_list in line:
                 os_name = line
                 print(get_data(os_name=os_name))
