@@ -11,7 +11,8 @@ os_code_list    = 'Код продукта'
 os_type_list    = 'Тип системы'
 spisok          = ["./data/info_1.txt", "./data/info_2.txt", "./data/info_3.txt"]
 
-def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
+#def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
+def get_data(*args, **kwargs):
     '''
     По програме курса есть изучение функций? Столкнулся здесь с позициоными аргументами. А как передать произвольное
     количество каких-то аргументов, без привязки к позиции? *args мне в даном случае не помогло, чувствуется пробел в
@@ -30,13 +31,13 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
-def write_to_csv(file, *args):
+def write_to_csv(file, **kwargs):
 
     DATA = [
-            [os_prod_list],
-            [os_name_list],
-            [os_code_list],
-            [os_type_list]
+            [get_data(*prod_name)],
+            [get_data(*os_name)],
+            [get_data(*os_code)],
+            [get_data(*os_type)]
             ]
 
     with open(file, 'r+') as list:
@@ -49,14 +50,18 @@ for i in spisok:
         for line in file.readlines():
             if os_prod_list in line:
                 prod_name = line
-                print(write_to_csv('./data/test.csv', get_data(prod_name)))
+#                print(get_data(prod_name=prod_name)
+                print(write_to_csv('./data/test.csv', prod_name=prod_name))
             elif os_name_list in line:
                 os_name = line
-                print(get_data(os_name=os_name))
+#                print(get_data(os_name=os_name))
+                print(get_data('./data/test.csv', os_name=os_name))
             elif os_code_list in line:
                 code_name = line
-                print(get_data(code_name=code_name))
+#                print(get_data(code_name=code_name)
+                print(get_data('./data/test.csv', code_name=code_name))
             elif os_type_list in line:
                 system_name = line
-                print(get_data(system_name=system_name))
+#                print(get_data(system_name=system_name))
+                print(get_data('./data/test.csv', system_name=system_name))
 
