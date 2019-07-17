@@ -12,14 +12,21 @@ os_code_list    = 'Код продукта'
 os_type_list    = 'Тип системы'
 spisok          = ["./data/info_1.txt", "./data/info_2.txt", "./data/info_3.txt"]
 
-#def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
-def get_data(prod_name=None, os_name=None, code_name=None, system_name=None, *args, **kwargs):
+#def get_data(**kwargs):
+def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
+
     '''
     По програме курса есть изучение функций? Столкнулся здесь с позициоными аргументами. А как передать произвольное
     количество каких-то аргументов, без привязки к позиции? *args мне в даном случае не помогло, чувствуется пробел в
     знаниях у меня. И ксати спасибо за курс, у вас хорошо получается предподовать.
     '''
+#    prod_name = None
+#    os_name = None
+#    code_name = None
+#    system_name = None
+
     if prod_name is not None:
+#    if kwargs is prod_name:
         os_prod_list = re.findall(r'Изготовитель системы:\s+(.+)', prod_name)
         return os_prod_list
     elif os_name is not None:
@@ -32,8 +39,8 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None, *ar
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
-with open('./data/read.json') as fjson:
-    pprint(json.load(fjson))
+#with open('./data/read.json') as fjson:
+#    pprint(json.load(fjson))
 
 def write_to_csv(file, **kwargs):
 
@@ -53,19 +60,15 @@ for i in spisok:
     with open(i, encoding="cp1251") as fcsv:
         for line in fcsv.readlines():
             if os_prod_list in line:
-                prod_name = line
-#                print(get_data(prod_name=prod_name)
-                print(write_to_csv('./data/read.csv', prod_name=prod_name))
+                print(get_data(prod_name=line))
+#                print(write_to_csv('./data/read.csv', prod_name=prod_name))
             elif os_name_list in line:
-                os_name = line
-#                print(get_data(os_name=os_name))
-                print(get_data('./data/read.csv', os_name=os_name))
+                print(get_data(os_name=line))
+#                print(get_data('./data/read.csv', os_name=os_name))
             elif os_code_list in line:
-                code_name = line
-#                print(get_data(code_name=code_name)
-                print(get_data('./data/read.csv', code_name=code_name))
+                print(get_data(code_name=line))
+#                print(get_data('./data/read.csv', code_name=code_name))
             elif os_type_list in line:
-                system_name = line
-#                print(get_data(system_name=system_name))
-                print(get_data('./data/read.csv', system_name=system_name))
+                print(get_data(system_name=line))
+#                print(get_data('./data/read.csv', system_name=system_name))
 
