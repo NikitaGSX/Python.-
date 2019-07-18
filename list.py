@@ -12,8 +12,8 @@ os_code_list    = 'Код продукта'
 os_type_list    = 'Тип системы'
 spisok          = ["./data/info_1.txt", "./data/info_2.txt", "./data/info_3.txt"]
 
-#def get_data(**kwargs):
-def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
+def get_data(**kwargs):
+#def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
 
     '''
     По програме курса есть изучение функций? Столкнулся здесь с позициоными аргументами. А как передать произвольное
@@ -23,7 +23,7 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
     '''
 
     if prod_name is not None:
-#    if kwargs is prod_name:
+#    if kwargs is getattr(prod_name):
         os_prod_list = re.findall(r'Изготовитель системы:\s+(.+)', prod_name)
         return os_prod_list
     elif os_name is not None:
