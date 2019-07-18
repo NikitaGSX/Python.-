@@ -36,8 +36,8 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
-#with open('./data/read.json') as fjson: # Просто чтение из файла
-#    pprint(json.load(fjson))
+with open('./data/read.json') as fjson: # Просто чтение из файла
+    pprint(json.load(fjson))
 
 def write_to_csv(file, prod_name=None, os_name=None, code_name=None, system_name=None):
 
