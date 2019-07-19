@@ -12,8 +12,8 @@ os_code_list    = 'Код продукта'
 os_type_list    = 'Тип системы'
 spisok          = ["./data/info_1.txt", "./data/info_2.txt", "./data/info_3.txt"]
 
-def get_data(**kwargs):
-#def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
+#def get_data(**kwargs):
+def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
 
     '''
     По програме курса есть изучение функций? Столкнулся здесь с позициоными аргументами. А как передать произвольное
