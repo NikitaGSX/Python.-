@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
-from pprint import pprint
+from pprint import pprint as pp
 import csv
 import json
 
@@ -40,8 +40,8 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         return os_type_list
 
 #with open('./data/read.json') as fjson: # Просто чтение из файла
-#    pprint(json.load(fjson))
-#
+#    pp(json.load(fjson))
+
 #def write_to_csv(file, prod_name=None, os_name=None, code_name=None, system_name=None):
 #
 #    '''
