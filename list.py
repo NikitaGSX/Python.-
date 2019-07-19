@@ -36,41 +36,45 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
-with open('./data/read.json') as fjson: # Просто чтение из файла
-    pprint(json.load(fjson))
-
-def write_to_csv(file, prod_name=None, os_name=None, code_name=None, system_name=None):
-
-    '''
-    С данным заданием не справился. Не понимаю как передать в функцию нечто, чтобы передать дальше,
-    в следующую функцию.
-    '''
-
-    DATA = [
-            [get_data(prod_name)],
-            [get_data(os_name)],
-            [get_data(code_name)],
-            [get_data(system_name)]
-            ]
-
-    with open(file, 'r+') as list:
-        writer = csv.writer(list)
-        for row in DATA:
-            writer.writerow(row)
+#with open('./data/read.json') as fjson: # Просто чтение из файла
+#    pprint(json.load(fjson))
+#
+#def write_to_csv(file, prod_name=None, os_name=None, code_name=None, system_name=None):
+#
+#    '''
+#    С данным заданием не справился. Не понимаю как передать в функцию нечто, чтобы передать дальше,
+#    в следующую функцию.
+#    '''
+#
+#    DATA = [
+#            [get_data(prod_name)],
+#            [get_data(os_name)],
+#            [get_data(code_name)],
+#            [get_data(system_name)]
+#            ]
+#
+#    with open(file, 'r+') as list:
+#        writer = csv.writer(list)
+#        for row in DATA:
+#            writer.writerow(row)
 
 for i in spisok:
     with open(i, encoding="cp1251") as fcsv:
         for line in fcsv.readlines():
             if os_prod_list in line:
+#                print(get_data(**{'prod_name': 'line'}))
                 print(get_data(prod_name=line))
 #                print(write_to_csv('./data/read.csv', prod_name=line))
             elif os_name_list in line:
+#                print(get_data(**{'os_name': 'line'}))
                 print(get_data(os_name=line))
 #                print(get_data('./data/read.csv', os_name=line))
             elif os_code_list in line:
+#                print(get_data(**{'code_name': 'line'}))
                 print(get_data(code_name=line))
 #                print(get_data('./data/read.csv', code_name=line))
             elif os_type_list in line:
+#                print(get_data(**{'system_name': 'line'}))
                 print(get_data(system_name=line))
 #                print(get_data('./data/read.csv', system_name=line))
 
