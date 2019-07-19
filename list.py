@@ -27,12 +27,15 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
         os_prod_list = re.findall(r'Изготовитель системы:\s+(.+)', prod_name)
         return os_prod_list
     elif os_name is not None:
+#    if kwargs is getattr(os_name):
         os_name_list = re.findall(r'Название ОС:\s+(.+)', os_name)
         return os_name_list
     elif code_name is not None:
+#    if kwargs is getattr(code_name):
         os_code_list = re.findall(r'Код продукта:\s+(.+)', code_name)
         return os_code_list
     elif system_name is not None:
+#    if kwargs is getattr(system_name):
         os_type_list = re.findall(r'Тип системы:\s+(.+)', system_name)
         return os_type_list
 
