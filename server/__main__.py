@@ -3,22 +3,18 @@
 
 import yaml
 import socket
-from argparse import ArgumentParser
+import argparse
 
-parser = ArgumentParser()
-
+parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument(
         '-c', '--config', type=str, required=False,
         help='Sets config file path'
         )
-
 args = parser.parse_args()
-
 config = {
         'host': 'localhost',
         'port': 8000,
         'buffersize': 1024
-
         }
 
 if args.config:

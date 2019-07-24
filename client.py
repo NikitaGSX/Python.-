@@ -37,7 +37,7 @@ try:
     sock.send(data.encode())
 
     b_response = sock.recv(buffersize)
-    print('Server send data: \n\t { b_response.decode() }')
+    print(f'Server send data: \n\t { b_response.decode() }')
 
 except KeyboardInterrupt:
     print('\n\tClient shutdown!')
