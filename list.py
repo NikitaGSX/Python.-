@@ -25,6 +25,7 @@ def get_data(prod_name=None, os_name=None, code_name=None, system_name=None):
 
     if prod_name is not None:
 #    if kwargs is getattr(prod_name):
+#    if kwargs == prod_name:
         os_prod_list = re.findall(regex_name, prod_name)
         return os_prod_list
     elif os_name is not None:
